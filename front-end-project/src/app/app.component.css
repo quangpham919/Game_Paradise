@@ -1,0 +1,12 @@
+@import url('@angular/material/prebuilt-themes/deeppurple-amber.css');
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+.title-welcome{
+  color:white;
+  font-family: 'Bebas Neue', cursive;
+  text-align: left;
+
+}
+.header-main-page{
+  background-color:primary;
+}
