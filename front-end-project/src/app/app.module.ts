@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule, FormsModule}from '@angular/forms';
 
 import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
 
@@ -19,8 +20,8 @@ import { GameConfigureComponent } from './components/admin/game-configure/game-c
 import{PlayerService} from './player.service'
 const routes: Routes= [
   
-  {path: 'addPlayer/:id', component:AddPlayerComponent},
-  {path: 'updatePlayer/:id',component:EditPlayerComponent},
+  {path: 'add_player', component:AddPlayerComponent},
+  {path: 'update_player/:id',component:EditPlayerComponent},
   {path:'adminMainPage', component:AdminMainPageComponent},
   {path: '', redirectTo: 'adminMainPage',pathMatch: 'full'}
 ]
@@ -41,6 +42,7 @@ const routes: Routes= [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatFormFieldModule, 
     MatInputModule, 

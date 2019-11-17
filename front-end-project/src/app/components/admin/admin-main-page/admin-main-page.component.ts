@@ -43,7 +43,7 @@ export class AdminMainPageComponent implements OnInit {
   }
 
   editPlayer(id){
-    this.router.navigate([`/updatePlayer/${id}`]);
+    this.router.navigate([`/update_player/${id}`]);
   }
 
   deletePlayer(id){
@@ -55,8 +55,6 @@ export class AdminMainPageComponent implements OnInit {
     console.log("I got "+filterValue);
     this.dataSource.filter= filterValue.trim().toLowerCase();
     
-  }
-
-
+  } 
 }
 

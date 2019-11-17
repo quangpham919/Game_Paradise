@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+.mat-typography{
+ text-align: center;
+ font-family: '';
+}
+.text-header{
+  font-family: 'Bebas Neue', cursive;
+}
+.create-form{
+  min-width: 250px;
+  width: 100%;
+}
+.field-full-width{
+  width:100%;
+}
+.create-player{
+  margin: 50px 50px 50px 50px;
+}
+.btn-back{
+  width:50%;
+}
+.btn-submit{
+  width:50%;
+}
+.field-option{
+  width: 15%;
+}

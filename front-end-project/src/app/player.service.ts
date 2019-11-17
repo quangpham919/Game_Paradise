@@ -15,7 +15,7 @@ export class PlayerService {
   }
 
   getPlayerById(id){
-    return this.http.get(`${this.uri}/players/${id}`);
+    return this.http.get(`${this.uri}/player/${id}`);
   }
 
   addPlayer(name, ranking, score){
