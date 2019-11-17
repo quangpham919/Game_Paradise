@@ -1,36 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {Router} from '@angular/router';
-
-
+import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggle} from '@angular/material/button-toggle';
+import {Router} from '@angular/router';
 
-
-import {player} from '../../../player.model';
-import {PlayerService} from '../../../player.service';
-
-
+import {player} from '../../player.model';
+import {PlayerService} from '../../player.service';
 
 @Component({
-  selector: 'app-admin-main-page',
-  templateUrl: './admin-main-page.component.html',
-  styleUrls: ['./admin-main-page.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AdminMainPageComponent implements OnInit {
-
-  columns_to_display: string[] =['name','ranking', 'score','action'];
+export class DashboardComponent implements OnInit {
+  columnsToDisplay: string[] =['name', 'ranking', 'score', 'time', 'games_played', 'status', 'join'];
   dataSource: MatTableDataSource<player>;
 
-
-
-  constructor(private playerService: PlayerService, private router : Router) {
+  constructor(private playerService: PlayerService, private router: Router)
+  {
 
   }
 
   ngOnInit() {
     this.fetchPlayer();
-
-    }
+  }
 
   fetchPlayer(){
     this.playerService
@@ -56,5 +50,5 @@ export class AdminMainPageComponent implements OnInit {
     this.dataSource.filter= filterValue.trim().toLowerCase();
 
   }
-}
 
+}

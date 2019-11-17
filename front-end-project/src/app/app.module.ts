@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
-import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
+import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatButtonToggle, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -15,16 +15,10 @@ import { AdminMainPageComponent } from './components/admin/admin-main-page/admin
 import { AddPlayerComponent } from './components/admin/add-player/add-player.component';
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-import{PlayerService} from './player.service'
-const routes: Routes= [
-  
-  {path: 'addPlayer/:id', component:AddPlayerComponent},
-  {path: 'updatePlayer/:id',component:EditPlayerComponent},
-  {path:'adminMainPage', component:AdminMainPageComponent},
-  {path: '', redirectTo: 'adminMainPage',pathMatch: 'full'}
-]
-
+import{PlayerService} from './player.service';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,27 +28,27 @@ const routes: Routes= [
     AdminMainPageComponent,
     AddPlayerComponent,
     EditPlayerComponent,
-    GameConfigureComponent
+    GameConfigureComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     MatToolbarModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatOptionModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
     MatSelectModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
-    
+    MatSnackBarModule,
+    AppRoutingModule
   ],
-  
+
   providers: [PlayerService],
   bootstrap: [AppComponent]
 })

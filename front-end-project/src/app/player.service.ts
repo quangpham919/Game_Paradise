@@ -26,8 +26,8 @@ export class PlayerService {
     };
     return this.http.post(`${this.uri}/player/add`, player_to_add);
   }
-  
-  
+
+
   updatePlayer(name, ranking, score, id){
     const player_to_update = {
         name: name,
