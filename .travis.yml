@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 10.9.0
+
+cache: npm
+
+install:
+  - cd front-end-project
+  - npm install
+
+script:
+  - npm run build
+  - npm run test
