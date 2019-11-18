@@ -1,1 +1,58 @@
-<p>game-configure works!</p>
+<div>
+    <mat-card>
+      <mat-card-title>
+        <button mat-raised-button color="primary" routerLink="">Add Game</button>
+      </mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container  matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef> Title </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Platform">
+                <th mat-header-cell *matHeaderCellDef>Platform </th>
+                <td mat-cell *matCellDef="let element"> {{element.platform}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Genre">
+                <th mat-header-cell *matHeaderCellDef> Genre </th>
+                <td mat-cell *matCellDef="let element"> {{element.genre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Rating">
+                <th mat-header-cell *matHeaderCellDef> Rating </th>
+                <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Publisher">
+                <th mat-header-cell *matHeaderCellDef> Publisher </th>
+                <td mat-cell *matCellDef="let element"> {{element.publisher}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Release">
+                <th mat-header-cell *matHeaderCellDef> Release </th>
+                <td mat-cell *matCellDef="let element"> {{element.release}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+           
+          <tr mat-header-row *matHeaderRowDef="columns_to_display"></tr>   
+          <tr mat-row *matRowDef="let row; columns: columns_to_display;"></tr>
+          <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button color ="primary" >Update</button> 
+                <button mat-button color ="warn" >Delete</button>  
+              </td>
+          </ng-container> 
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>

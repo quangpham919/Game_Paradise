@@ -23,10 +23,34 @@
       <mat-form-field class="field-full-width">
           <input matInput placeholder="Score" formControlName="score" #score>
       </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Time" formControlName="time" #time>
+      </mat-form-field>
+      <div>
+      <mat-form-field class="field-full-width">
+          <mat-label>Favorite Game: </mat-label>
+          <mat-select formControlName='favGame' #favGame>
+            <mat-option *ngFor='let element of listOfGames'
+                        [value]=element.title>{{element.title}}
+            </mat-option>    
+          </mat-select> 
+      </mat-form-field>
+      </div>  
+      <mat-form-field class="field-option">
+          <mat-label>Status </mat-label>
+          <mat-select formControlName='status' #status>
+            <mat-option value='Availalble'>Availalble</mat-option> 
+            <mat-option value='Unavailalble'>Unavailalble</mat-option>   
+          </mat-select> 
+      </mat-form-field>
+
+
+
       <mat-divider></mat-divider>
       <br><br>
       <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
-      <button class='btn-submit' type='submit' (click)="addPlayer(name.value,ranking.value,score.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Create</button>
+      <button class='btn-submit' type='submit' (click)="addPlayer(name.value,ranking.value,score.value,time.value,status.value,favGame.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Create</button>
       
     </form>
   </mat-card>

@@ -7,6 +7,9 @@ import {MatPaginator} from '@angular/material/paginator';
 
 
 import {player} from '../../../player.model'
+import {game} from '../../../game.model'
+
+import {GameService} from '../../../game.service';
 import {PlayerService} from '../../../player.service';
 
 
@@ -18,13 +21,13 @@ import {PlayerService} from '../../../player.service';
 })
 export class AdminMainPageComponent implements OnInit {
 
-  columns_to_display: string[] =['name','ranking', 'score','action'];
+  columns_to_display: string[] =['name','ranking', 'score','time','status','action'];
   dataSource: MatTableDataSource<player>;
   
 
 
-  constructor(private playerService: PlayerService, private router : Router) {
-
+  constructor(private playerService: PlayerService, private router : Router, private gameService : GameService) {
+      
   } 
 
   ngOnInit() {
@@ -41,6 +44,8 @@ export class AdminMainPageComponent implements OnInit {
           console.log(this.dataSource);
         });
   }
+
+  
 
   editPlayer(id){
     this.router.navigate([`/update_player/${id}`]);
