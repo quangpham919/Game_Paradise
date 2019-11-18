@@ -44,7 +44,7 @@ export class GameService {
     return this.http.post(`${this.uri}/game/update/${id}`, game_to_update);
   }
 
-  deletegame(id){
+  deleteGame(id){
     return this.http.get(`${this.uri}/game/delete/${id}`);
   }
 }

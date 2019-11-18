@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  email: String;
+  password: String;
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  login(email, password): void {
+    if( email == 'admin@email.com' && password == 'Thong17'){
+      this.router.navigate(['/admin/home']);
+    }
+    else{
+      alert('Invalid credentials');
+    }
   }
 
 }

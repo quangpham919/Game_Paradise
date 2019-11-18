@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule, FormsModule}from '@angular/forms';
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
 import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
 
 
@@ -17,14 +16,17 @@ import { AddPlayerComponent } from './components/admin/add-player/add-player.com
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
 
-import{PlayerService} from './player.service';
-import { GameComponent } from './components/game/game.component'
-const routes: Routes= [
+import {PlayerService} from './player.service';
+import { GameComponent } from './components/game/game.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginService } from './login.service';
+import { GameService } from './game.service';
 
-  {path: 'add_player', component:AddPlayerComponent},
-  {path: 'update_player/:id',component:EditPlayerComponent},
-  {path:'adminMainPage', component:AdminMainPageComponent},
-  {path: '', redirectTo: 'adminMainPage',pathMatch: 'full'}
+const routes: Routes = [
+  {path: 'add_player', component: AddPlayerComponent},
+  {path: 'update_player/:id', component: EditPlayerComponent},
+  {path: 'adminMainPage', component: AdminMainPageComponent},
+  {path: '', redirectTo: '/adminMainPage', pathMatch: 'full'}
 ]
 
 @NgModule({
@@ -37,12 +39,12 @@ const routes: Routes= [
     AddPlayerComponent,
     EditPlayerComponent,
     GameConfigureComponent,
-    GameComponent
+    GameComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -51,12 +53,13 @@ const routes: Routes= [
     MatOptionModule,
     MatSelectModule,
     MatButtonModule,
+    RouterModule.forRoot(routes),
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
-
+    MatSnackBarModule,
+    FormsModule
   ],
 
   providers: [PlayerService],
