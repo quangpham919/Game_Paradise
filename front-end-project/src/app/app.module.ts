@@ -17,9 +17,10 @@ import { AddPlayerComponent } from './components/admin/add-player/add-player.com
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
 
-import{PlayerService} from './player.service'
+import{PlayerService} from './player.service';
+import { GameComponent } from './components/game/game.component'
 const routes: Routes= [
-  
+
   {path: 'add_player', component:AddPlayerComponent},
   {path: 'update_player/:id',component:EditPlayerComponent},
   {path:'adminMainPage', component:AdminMainPageComponent},
@@ -35,7 +36,8 @@ const routes: Routes= [
     AdminMainPageComponent,
     AddPlayerComponent,
     EditPlayerComponent,
-    GameConfigureComponent
+    GameConfigureComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -44,19 +46,19 @@ const routes: Routes= [
     HttpClientModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatOptionModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
     MatSelectModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule
-    
+
   ],
-  
+
   providers: [PlayerService],
   bootstrap: [AppComponent]
 })

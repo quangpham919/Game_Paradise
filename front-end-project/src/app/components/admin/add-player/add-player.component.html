@@ -2,32 +2,50 @@
   <mat-card class='create-player'>
     <section class="mat-typography">
         <h3 class="text-header"><strong>Add a new player.</strong></h3>
-    </section>    
+    </section>
     <mat-divider></mat-divider>
     <br>
     <form [formGroup]='createForm' class='create-form'>
-     
+
       <mat-form-field class="field-full-width">
           <input matInput placeholder="Name of player" formControlName="name" #name>
       </mat-form-field>
-      
+
       <mat-form-field class="field-option">
-          <mat-label>Player's ranking</mat-label>
+          <mat-label>Rank</mat-label>
           <mat-select formControlName='ranking' #ranking>
             <mat-option *ngFor='let element of player_ranking'
                         [value]=element>{{element}}
-            </mat-option>    
-          </mat-select> 
+            </mat-option>
+          </mat-select>
       </mat-form-field>
-      
+
       <mat-form-field class="field-full-width">
           <input matInput placeholder="Score" formControlName="score" #score>
       </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Time" value={{today | date='medium'}} formControlName="time" #time>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Favorite Game" formControlName="favorGame" #favoGame>
+      </mat-form-field>
+
+      <mat-form-field class="field-option">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName='status' #status>
+          <mat-option *ngFor='let element of player_status'
+                      [value]=element>{{element}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
       <mat-divider></mat-divider>
       <br><br>
       <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
-      <button class='btn-submit' type='submit' (click)="addPlayer(name.value,ranking.value,score.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Create</button>
-      
+      <button class='btn-submit' type='submit' (click)="addPlayer(name.value,ranking.value,score.value,time.value,favoGame.value,status.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Create</button>
+
     </form>
   </mat-card>
 </div>

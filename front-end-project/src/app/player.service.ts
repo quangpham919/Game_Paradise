@@ -18,21 +18,27 @@ export class PlayerService {
     return this.http.get(`${this.uri}/player/${id}`);
   }
 
-  addPlayer(name, ranking, score){
+  addPlayer(name, ranking, score, time, games, status) {
     const player_to_add = {
         name: name,
-        ranking : ranking,
-        score : score
+        ranking: ranking,
+        score: score,
+        time: time,
+        games: games,
+        status: status
     };
     return this.http.post(`${this.uri}/player/add`, player_to_add);
   }
-  
-  
-  updatePlayer(name, ranking, score, id){
+
+
+  updatePlayer(name, ranking, score, time, favoGame, status, id){
     const player_to_update = {
         name: name,
         ranking : ranking,
-        score : score
+        score : score,
+        time: time,
+        favoGame: favoGame,
+        status: status
     };
     return this.http.post(`${this.uri}/player/update/${id}`, player_to_update);
   }

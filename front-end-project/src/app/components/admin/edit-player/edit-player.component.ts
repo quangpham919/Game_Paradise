@@ -18,21 +18,24 @@ export class EditPlayerComponent implements OnInit {
   Player : any={};
   updateForm: FormGroup;
   player_ranking: Number[];
+  selected: Number;
+  player_status: String[];
 
-  constructor(private playerService : PlayerService, private router: Router,private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) { 
-    this.player_ranking=[1,2,3,4,5,6,7,8,9,10];
+  constructor(private playerService : PlayerService, private router: Router,private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) {
+    this.player_ranking= [1,2,3,4,5,6,7,8,9,10];
+    this.player_status = ['Available','Unavailable'];
     this.createForm();
-    
+
   }
-  
+
   createForm(){
     this.updateForm = this.formBuilder.group({
-      name: ['',Validators.required],
-      ranking:['',Validators.required],
+      name: ['', Validators.required],
+      ranking:['', Validators.required],
       score: ['', Validators.required]
     });
   }
-  
+
 
   ngOnInit() {
     this.route.params.subscribe(params=>{
@@ -42,6 +45,7 @@ export class EditPlayerComponent implements OnInit {
         console.log(res);
         this.Player = res;
         console.log(this.Player);
+        this.selected = this.Player.ranking;
         this.updateForm.get('name').setValue(this.Player.name);
         this.updateForm.get('ranking').setValue(this.Player.ranking);
         this.updateForm.get('score').setValue(this.Player.score);
@@ -50,11 +54,12 @@ export class EditPlayerComponent implements OnInit {
     });
   }
 
-  updatePlayer(name,ranking,score){
-    this.playerService.updatePlayer(name,ranking,score,this.id).subscribe(()=>{
+  updatePlayer(name, ranking, score,time, favoGame,status){
+    this.playerService.updatePlayer(name, ranking, score, time, favoGame, status, this.id).subscribe(()=>{
       this.snackBar.open("Player has been updated successfully!!!", "OK", {
         duration: 3000
       });
+      this.router.navigate(['/adminMainPage']);
     });
   }
 }
