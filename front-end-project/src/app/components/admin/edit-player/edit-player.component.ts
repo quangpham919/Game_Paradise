@@ -19,12 +19,12 @@ export class EditPlayerComponent implements OnInit {
   updateForm: FormGroup;
   player_ranking: Number[];
 
-  constructor(private playerService : PlayerService, private router: Router,private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) { 
+  constructor(private playerService : PlayerService, private router: Router,private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) {
     this.player_ranking=[1,2,3,4,5,6,7,8,9,10];
     this.createForm();
-    
+
   }
-  
+
   createForm(){
     this.updateForm = this.formBuilder.group({
       name: ['',Validators.required],
@@ -32,7 +32,7 @@ export class EditPlayerComponent implements OnInit {
       score: ['', Validators.required]
     });
   }
-  
+
 
   ngOnInit() {
     this.route.params.subscribe(params=>{
