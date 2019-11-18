@@ -8,4 +8,5 @@ install:
   - npm install
 
 script:
+  - cd back-end
   - npm run dev
