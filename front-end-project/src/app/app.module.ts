@@ -19,7 +19,7 @@ import { GameConfigureComponent } from './components/admin/game-configure/game-c
 
 import{PlayerService} from './player.service'
 const routes: Routes= [
-  
+
   {path: 'add_player', component:AddPlayerComponent},
   {path: 'update_player/:id',component:EditPlayerComponent},
   {path:'adminMainPage', component:AdminMainPageComponent},
@@ -44,19 +44,18 @@ const routes: Routes= [
     HttpClientModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatOptionModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
     MatSelectModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule
-    
   ],
-  
+
   providers: [PlayerService],
   bootstrap: [AppComponent]
 })
