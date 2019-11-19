@@ -18,21 +18,28 @@ export class PlayerService {
     return this.http.get(`${this.uri}/player/${id}`);
   }
 
-  addPlayer(name, ranking, score){
+  addPlayer(name, ranking, score, favGame,time,status){
     const player_to_add = {
         name: name,
         ranking : ranking,
-        score : score
+        score : score,
+        favGame: favGame,
+        time:time,
+        status:status
     };
     return this.http.post(`${this.uri}/player/add`, player_to_add);
   }
-  
-  
-  updatePlayer(name, ranking, score, id){
+
+  updatePlayer(name, ranking, score,time,status,favGame, id,gamePlayed){
     const player_to_update = {
         name: name,
         ranking : ranking,
-        score : score
+        score : score,
+        time : time,
+        status: status,
+        favGame: favGame,
+        gamePlayed:gamePlayed
+        
     };
     return this.http.post(`${this.uri}/player/update/${id}`, player_to_update);
   }
@@ -40,4 +47,5 @@ export class PlayerService {
   deletePlayer(id){
     return this.http.get(`${this.uri}/player/delete/${id}`);
   }
+
 }

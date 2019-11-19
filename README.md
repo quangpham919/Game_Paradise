@@ -1,5 +1,4 @@
-Hello World 
-list task done:
-frontend: admin list, add ,upload, delete player
-backend : player model 
+UPDATE: 
+implement game object, make changes to player dashboard.
+
 

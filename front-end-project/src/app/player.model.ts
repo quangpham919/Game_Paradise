@@ -1,3 +1,5 @@
+import { game } from './game.model';
+
 export interface player{
   id: String;
   name: String;

@@ -24,7 +24,6 @@ export class GameService {
       rating: rating,
       publisher: publisher,
       release : release
-
     };
     return this.http.post(`${this.uri}/game/add`,game_to_add);
   }

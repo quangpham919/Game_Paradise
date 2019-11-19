@@ -57,7 +57,6 @@ const routes: Routes= [
     MatDividerModule,
     MatSnackBarModule,
     MatTabsModule
-
   ],
 
   providers: [PlayerService,
