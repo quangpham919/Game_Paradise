@@ -4,11 +4,9 @@ node_js:
 
 cache: npm
 
-before_install:
-  - cd back-end
-
 install:
+  - cd front-end-project
   - npm install
 
 script:
-  - npm run dev
+  - npm run build
