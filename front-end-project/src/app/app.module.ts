@@ -21,14 +21,15 @@ import { GameComponent } from './components/game/game.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginService } from './login.service';
 import { GameService } from './game.service';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  {path: '404', redirectTo: '404'},
-  {path: 'add_player', component: AddPlayerComponent},
-  {path: 'update_player/:id', component: EditPlayerComponent},
-  {path: 'adminMainPage', component: AdminMainPageComponent},
-  {path: '', redirectTo: '/adminMainPage', pathMatch: 'full'}
-]
+// const appRoutes: Routes = [
+//   {path: '404', redirectTo: '404'},
+//   {path: 'add_player', component: AddPlayerComponent},
+//   {path: 'update_player/:id', component: EditPlayerComponent},
+//   {path: 'adminMainPage', component: AdminMainPageComponent},
+//   {path: '', redirectTo: '/adminMainPage', pathMatch: 'full'}
+// ]
 
 @NgModule({
   imports: [
@@ -42,13 +43,13 @@ const appRoutes: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatButtonModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
