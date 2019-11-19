@@ -22,7 +22,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginService } from './login.service';
 import { GameService } from './game.service';
 
-const routes: Routes = [
+const appRoutes: Routes = [
+  {path: '404', redirectTo: '404'},
   {path: 'add_player', component: AddPlayerComponent},
   {path: 'update_player/:id', component: EditPlayerComponent},
   {path: 'adminMainPage', component: AdminMainPageComponent},
@@ -30,18 +31,6 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PlayerRankingComponent,
-    JoinGameComponent,
-    AdminLoginComponent,
-    AdminMainPageComponent,
-    AddPlayerComponent,
-    EditPlayerComponent,
-    GameConfigureComponent,
-    GameComponent,
-    DashboardComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -53,13 +42,25 @@ const routes: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatButtonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(appRoutes, { enableTracing: true }),
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule,
     FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    PlayerRankingComponent,
+    JoinGameComponent,
+    AdminLoginComponent,
+    AdminMainPageComponent,
+    AddPlayerComponent,
+    EditPlayerComponent,
+    GameConfigureComponent,
+    GameComponent,
+    DashboardComponent
   ],
 
   providers: [PlayerService],
