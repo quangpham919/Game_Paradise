@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule}from '@angular/forms';
 
-import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
+import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule,MatTabsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -17,7 +17,9 @@ import { AddPlayerComponent } from './components/admin/add-player/add-player.com
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
 
-import{PlayerService} from './player.service'
+import{PlayerService} from './player.service';
+import{GameService} from './game.service';
+
 const routes: Routes= [
 
   {path: 'add_player', component:AddPlayerComponent},
@@ -53,10 +55,13 @@ const routes: Routes= [
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
+
   ],
 
-  providers: [PlayerService],
+  providers: [PlayerService,
+              GameService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
