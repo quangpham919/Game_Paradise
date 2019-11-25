@@ -13,9 +13,9 @@
         
         <mat-form-field class="field-option">
             <mat-label>Player's ranking</mat-label>
-            <mat-select formControlName='ranking' #ranking>
+            <mat-select formControlName='ranking' [(value)]="this.old_ranking" #ranking>
               <mat-option *ngFor='let element of player_ranking'
-                          [value]=element>{{element}}
+                          [value]=element> {{element}}
               </mat-option>    
             </mat-select> 
         </mat-form-field>
@@ -23,10 +23,40 @@
         <mat-form-field class="field-full-width">
             <input matInput placeholder="Score" formControlName="score" #score>
         </mat-form-field>
+        
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Time" formControlName="time" #time>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+            <mat-label>Favorite Game: </mat-label>
+            <mat-select formControlName='favGame' [(value)]='this.old_favGame' #favGame>
+              <mat-option *ngFor='let element of listOfGames'
+                          [value]=element.title>{{element.title}}
+              </mat-option>    
+            </mat-select> 
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width">
+          <mat-label>Choose game had been played: </mat-label>
+          <mat-select formControlName='game_played' [(value)]='this.old_gamePlayed'  #game_played>
+            <mat-option *ngFor='let element of listOfGames'
+                        [value]=element.title>{{element.title}} </mat-option>    
+          </mat-select> 
+        </mat-form-field>
+  
+        <mat-form-field class="field-option">
+            <mat-label>Status </mat-label>
+            <mat-select formControlName='status' [(value)]='old_status' #status>
+              <mat-option value='Available'>Available</mat-option> 
+              <mat-option value='Unavailable'>Unavailable</mat-option>   
+            </mat-select> 
+        </mat-form-field>
+        
         <mat-divider></mat-divider>
         <br><br>
         <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
-        <button class='btn-submit' type='submit' (click)="updatePlayer(name.value,ranking.value,score.value)" [disabled]='updateForm.pristine || updateForm.invalid' mat-raised-button color='primary'>Update</button>
+        <button class='btn-submit' type='submit' (click)="updatePlayer(name.value,ranking.value,score.value,time.value,status.value,favGame.value,game_played.value)" [disabled]='updateForm.pristine || updateForm.invalid' mat-raised-button color='primary' >Update</button>
         
       </form>
     </mat-card>

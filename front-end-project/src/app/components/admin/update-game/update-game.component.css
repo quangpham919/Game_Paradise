@@ -14,7 +14,7 @@
 .field-full-width{
   width:100%;
 }
-.create-player{
+.update-game{
   margin: 50px 50px 50px 50px;
 }
 .btn-back{
@@ -23,6 +23,6 @@
 .btn-submit{
   width:50%;
 }
-.field-option{
+.field-half-width{
   width: 15%;
 }

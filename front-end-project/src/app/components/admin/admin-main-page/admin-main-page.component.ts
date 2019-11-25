@@ -7,6 +7,9 @@ import {MatPaginator} from '@angular/material/paginator';
 
 
 import {player} from '../../../player.model'
+import {game} from '../../../game.model'
+
+import {GameService} from '../../../game.service';
 import {PlayerService} from '../../../player.service';
 
 
@@ -18,13 +21,12 @@ import {PlayerService} from '../../../player.service';
 })
 export class AdminMainPageComponent implements OnInit {
 
-  columns_to_display: string[] =['name','ranking', 'score','action'];
+  columns_to_display: string[] =['name','ranking', 'score','time','game_played','status','action'];
   dataSource: MatTableDataSource<player>;
-  
+  isShow : false;
 
-
-  constructor(private playerService: PlayerService, private router : Router) {
-
+  constructor(private playerService: PlayerService, private router : Router, private gameService : GameService) {
+      
   } 
 
   ngOnInit() {
@@ -36,11 +38,13 @@ export class AdminMainPageComponent implements OnInit {
     this.playerService  
         .getPlayers()
         .subscribe((data : MatTableDataSource<player>)=>{
-          this.dataSource = data;  
+          this.dataSource = data;
           console.log("Requested players....");
           console.log(this.dataSource);
         });
   }
+
+
 
   editPlayer(id){
     this.router.navigate([`/update_player/${id}`]);
@@ -51,10 +55,6 @@ export class AdminMainPageComponent implements OnInit {
       this.fetchPlayer();
     });
   }
-  applyFilter(filterValue: String){
-    console.log("I got "+filterValue);
-    this.dataSource.filter= filterValue.trim().toLowerCase();
-    
-  } 
+ 
 }
 

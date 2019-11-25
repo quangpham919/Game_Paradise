@@ -1,0 +1,52 @@
+<div>
+  <mat-card class='update-game'>
+    <section class="mat-typography">
+        <h3 class="text-header"><strong>Update this game.</strong></h3>
+    </section>    
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]='updateForm' class='update-form'>
+     
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Title of the game" formControlName="title" #title>
+      </mat-form-field>
+      
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Genre of the game" formControlName="genre" #genre>
+      </mat-form-field>
+      
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder=" Game's platform" formControlName="platform" #platform>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Game's rating" formControlName="rating" #rating>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Game's publisher" formControlName="publisher" #publisher>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+          <input matInput 
+          placeholder="Release" formControlName="release" #release>
+      </mat-form-field>
+      
+      <mat-form-field class = "field-half-width">
+        <mat-label>Status:  </mat-label>
+        <mat-select formControlName='status' [(value)] = 'this.old_status' #status>
+          <mat-option value = 'Active'> Active</mat-option>
+          <mat-option value = 'Inactive'> Inactive</mat-option>
+        </mat-select> 
+
+      </mat-form-field>
+
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
+      <button class='btn-submit' type='submit' (click)="updateGame(title.value,platform.value,genre.value,rating.value,publisher.value,release.value,status.value)" [disabled]='updateForm.pristine || updateForm.invalid' mat-raised-button color='primary'>Update</button>
+      
+    </form>
+  </mat-card>
+</div>

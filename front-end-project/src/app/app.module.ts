@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule}from '@angular/forms';
 
-import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
+import {MatGridListModule,MatDatepickerModule,MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule,MatTabsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -16,14 +16,23 @@ import { AdminMainPageComponent } from './components/admin/admin-main-page/admin
 import { AddPlayerComponent } from './components/admin/add-player/add-player.component';
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
+import { AddGameComponent } from './components/admin/add-game/add-game.component';
+import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
 
-import{PlayerService} from './player.service'
+import{PlayerService} from './player.service';
+import{GameService} from './game.service';
+
+
 const routes: Routes= [
-
+  
   {path: 'add_player', component:AddPlayerComponent},
   {path: 'update_player/:id',component:EditPlayerComponent},
+  {path:'add_game', component: AddGameComponent},
+  {path: 'update_game/:id', component:UpdateGameComponent},
   {path:'adminMainPage', component:AdminMainPageComponent},
-  {path: '', redirectTo: 'adminMainPage',pathMatch: 'full'}
+  {path:'gamelobby',component:PlayerRankingComponent},
+  {path:'join_game/:id',component:JoinGameComponent},
+  {path: '', redirectTo: 'gamelobby',pathMatch: 'full'}
 ]
 
 @NgModule({
@@ -35,7 +44,9 @@ const routes: Routes= [
     AdminMainPageComponent,
     AddPlayerComponent,
     EditPlayerComponent,
-    GameConfigureComponent
+    GameConfigureComponent,
+    AddGameComponent,
+    UpdateGameComponent
   ],
   imports: [
     BrowserModule,
@@ -44,19 +55,24 @@ const routes: Routes= [
     HttpClientModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatOptionModule, 
     MatSelectModule,
-    MatButtonModule,
+    MatButtonModule, 
     MatTableModule,
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatGridListModule,
+    MatDatepickerModule
+    
   ],
-
-  providers: [PlayerService],
+  
+  providers: [PlayerService,
+              GameService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

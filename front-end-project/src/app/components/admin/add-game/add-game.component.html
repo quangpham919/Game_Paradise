@@ -1,0 +1,42 @@
+<div>
+    <mat-card class='create-player'>
+      <section class="mat-typography">
+          <h3 class="text-header"><strong>Add a new game.</strong></h3>
+      </section>    
+      <mat-divider></mat-divider>
+      <br>
+      <form [formGroup]='createForm' class='create-form'>
+       
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Title of the game" formControlName="title" #title>
+        </mat-form-field>
+        
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Genre of the game" formControlName="genre" #genre>
+        </mat-form-field>
+        
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder=" Game's platform" formControlName="platform" #platform>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Game's rating" formControlName="rating" #rating>
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Game's publisher" formControlName="publisher" #publisher>
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width">
+            <input matInput 
+            placeholder="Release" formControlName="release" #release>
+        </mat-form-field>
+  
+        <mat-divider></mat-divider>
+        <br><br>
+        <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
+        <button class='btn-submit' type='submit' (click)="addGame(title.value,platform.value,genre.value,rating.value,publisher.value,release.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Save</button>
+        
+      </form>
+    </mat-card>
+  </div>

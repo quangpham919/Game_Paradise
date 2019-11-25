@@ -5,9 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GameService {
-
   uri = 'http://localhost:4000';
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   getGames(){
     return this.http.get(`${this.uri}/games`);
@@ -17,33 +16,32 @@ export class GameService {
     return this.http.get(`${this.uri}/game/${id}`);
   }
 
-  addGame(title, platform, genre, rating, publisher, release, status) {
-    const game_to_add = {
-        title: title,
-        platform: platform,
-        genre: genre,
-        rating: rating,
-        publisher: publisher,
-        release: release,
-        status: status
+  addGame(title,platform, genre, rating, publisher, release){
+    const game_to_add={
+      title: title,
+      platform : platform,
+      genre : genre,
+      rating: rating,
+      publisher: publisher,
+      release : release
+      
     };
-    return this.http.post(`${this.uri}/game/add`, game_to_add);
+    return this.http.post(`${this.uri}/game/add`,game_to_add);
   }
 
-
-  updateGame(title, platform, genre, rating, publisher, release, status, id){
-    const game_to_update = {
-        title: title,
-        platform: platform,
-        genre: genre,
-        rating: rating,
-        publisher: publisher,
-        release: release,
-        status: status
+  updateGame(title,platform, genre, rating, publisher, release, status,id){
+    const game_to_add={
+      title: title,
+      platform : platform,
+      genre : genre,
+      rating: rating,
+      publisher: publisher,
+      release : release,
+      status : status
     };
-    return this.http.post(`${this.uri}/game/update/${id}`, game_to_update);
+    return this.http.post(`${this.uri}/game/update/${id}`,game_to_add);
   }
-
+  
   deleteGame(id){
     return this.http.get(`${this.uri}/game/delete/${id}`);
   }

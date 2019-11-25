@@ -1,1 +1,47 @@
-<p>join-game works!</p>
+<div>
+    <mat-card class='join-game'>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]='joinGame' class='join-game-form'>
+         
+          <mat-form-field class="field-half-width">
+              <mat-label>Name: </mat-label>
+              <input matInput [value]="Player.name" formControlName="name" readonly >
+          </mat-form-field>
+          
+          <mat-form-field class="field-half-width">
+              <mat-label>Ranking: </mat-label>
+              <input matInput [value]="Player.ranking" formControlName="ranking" readonly >
+          </mat-form-field>
+          
+          <mat-form-field class="field-half-width">
+              <mat-label>Score: </mat-label>
+              <input matInput [value]="Player.score" formControlName="score" readonly>
+          </mat-form-field>
+          
+          <mat-form-field class="field-hafl-width">
+              <mat-label>Time: </mat-label>
+              <input matInput [value]="Player.time" formControlName="time" readonly>
+          </mat-form-field>
+    
+          <mat-form-field class="field-half-width">
+              <mat-label>Favorite Game: </mat-label>
+              <input matInput [value]="Player.favGame" formControlName="favGame" readonly>
+          </mat-form-field>
+  
+          <mat-form-field class="field-half-width">
+            <mat-label>Please pick game to play: </mat-label>
+            <mat-select formControlName='game_played' #game_played>
+              <mat-option *ngFor='let element of listOfGames'
+                          [value]=element.title>{{element.title}} </mat-option>    
+            </mat-select> 
+          </mat-form-field>
+          
+          <mat-divider></mat-divider>
+          <br><br>
+          <button class='btn-back' mat-raised-button color='accent' routerLink='/gamelobby'>Back</button>
+          <button class='btn-submit' type='submit' (click)="JoinGame(game_played.value)" [disabled]='joinGame.pristine || joinGame.invalid' mat-raised-button color='primary' >Join </button>
+          
+        </form>
+      </mat-card>
+</div>  

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+.text-header{
+  font-family: 'Bebas Neue', cursive;
+}
+.join-game-form{
+  min-width: 250px;
+  width: 100%;
+}
+
+.field-half-width{
+  width:100%;
+}
+.join-game{
+  margin: 80px 50px 80px 50px;
+}
+.btn-back{
+  width:50%;
+}
+.btn-submit{
+  width:50%;
+}
+.field-option{
+  width: 15%;
+}

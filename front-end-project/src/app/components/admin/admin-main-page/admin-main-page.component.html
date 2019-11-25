@@ -1,12 +1,15 @@
-<div class="player-dashboard">
+<mat-tab-group mat-stretch-tabs  class="main-dashboard">
+<mat-tab class="player-tab" label="Player">
+<div>
   <mat-card>
     <mat-card-title>
       <button mat-raised-button color="primary" routerLink="/add_player">Add Player</button>
     </mat-card-title>
     <mat-card-content>
-      <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
+       <!-- <mat-form-field>
+           <input matInput (keyup)="" placeholder="Filter"> 
+      </mat-form-field>  -->
+
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container  matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Player </th>
@@ -21,19 +24,44 @@
           <ng-container matColumnDef="score">
               <th mat-header-cell *matHeaderCellDef> Score </th>
               <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+          </ng-container> 
+
+          <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef> Time </th>
+              <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+          </ng-container>
+
+           <ng-container matColumnDef="game_played">
+              <th mat-header-cell *matHeaderCellDef> Games Played </th>
+              <td mat-cell *matCellDef="let element"  >{{element.gamePlayed}}  </td>
+          </ng-container>  
+          
+          <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status  </th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
           </ng-container>
           
+          <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button color ="primary" (click)="editPlayer(element._id)">Update</button> 
+                <button mat-button color ="warn" (click)="deletePlayer(element._id)">Delete</button>  
+              </td>
+          </ng-container> 
          
         <tr mat-header-row *matHeaderRowDef="columns_to_display"></tr>   
         <tr mat-row *matRowDef="let row; columns: columns_to_display;"></tr>
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-button color ="primary" (click)="editPlayer(element._id)">Update</button> 
-              <button mat-button color ="warn" (click)="deletePlayer(element._id)">Delete</button>  
-            </td>
-        </ng-container> 
+        
       </table>
+      
     </mat-card-content>
   </mat-card>
+
 </div>
+
+</mat-tab>
+<mat-tab class="game-tab" label="Game">
+<app-game-configure></app-game-configure>
+</mat-tab>
+
+</mat-tab-group>
