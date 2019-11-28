@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {LoginService} from '../../../login.service';
 import { Router } from '@angular/router';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 
 
 export class CustomErrorMatcher implements ErrorStateMatcher{
@@ -38,18 +40,14 @@ export class AdminLoginComponent implements OnInit {
 
   email: String;
   password: String;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginService:LoginService) { }
 
   ngOnInit() {
   }
 
-  login(email, password): void{
-    if(email == 'thongnguyen@gmail.com' && password == 'Thongnguyen'){
-      this.router.navigate(['/admin/main']);
-    }
-    else{
-      console.log('Login failed');
-    }
-  }
-
+  login(email, password){
+    console.log(email + ' ' + password);
+    this.loginService.login(email,password)
+    this.router.navigate(['/admin/main'])
+  };
 }

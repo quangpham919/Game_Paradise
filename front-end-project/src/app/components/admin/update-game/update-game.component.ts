@@ -55,7 +55,7 @@ export class UpdateGameComponent implements OnInit {
 
   updateGame(title,platform, genre, rating, publisher, release, status){
      this.gameService.updateGame(title,platform, genre, rating, publisher, release, status,this.id).subscribe(()=>{
-       this.router.navigate(['/adminMainPage']);
+       this.router.navigate(['/admin/main']);
        this.snackBar.open("Game has been updated successfully!!!", "OK", {
           duration: 3000
      });

@@ -7,5 +7,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/games
+GET http://localhost:4000/admins
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGQyZGU1NTg5ZDk1MDZkZmFjZTMxNGYiLCJpYXQiOjE1NzQxMDQ2MzZ9.1YV5p2laupEt7NsxCIN0g3EZ2E5wvcQOFl8X-1thGVM

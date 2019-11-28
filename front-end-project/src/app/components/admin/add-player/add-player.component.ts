@@ -34,7 +34,7 @@ export class AddPlayerComponent implements OnInit {
   
    addPlayer(name,ranking,score,time,status,favGame){
      this.playerService.addPlayer(name,ranking,score,time,status,favGame).subscribe(()=>{
-     this.router.navigate(['/adminMainPage']);
+     this.router.navigate(['/admin/main']);
      });
    }
    

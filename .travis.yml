@@ -1,14 +1,4 @@
 language: node_js
-<<<<<<< HEAD
-
-node_js:
-  - "10.9.0"
-
-cache: npm
-
-before_install:
-  - ls -la
-=======
 node_js:
   - 10.9.0
 
@@ -20,4 +10,3 @@ install:
 
 script:
   - npm run build
->>>>>>> thong-update-fix

@@ -10,7 +10,6 @@ import { AdminMainPageComponent } from './components/admin/admin-main-page/admin
 import { AddPlayerComponent } from './components/admin/add-player/add-player.component';
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -19,9 +18,9 @@ const appRoutes: Routes = [
   {path: 'admin/login', component: AdminLoginComponent},
   {path: 'admin/update_player/:id', component: EditPlayerComponent},
   {path: 'admin/main', component: AdminMainPageComponent},
-  {path:'dashboard',component:DashboardComponent},
+  {path:'dashboard',component:PlayerRankingComponent},
   {path:'admin/add-game',component:GameConfigureComponent},
-  {path: '', redirectTo: '/admin/main', pathMatch: 'full'}
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 
 @NgModule({

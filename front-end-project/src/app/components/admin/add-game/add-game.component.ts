@@ -27,10 +27,10 @@ export class AddGameComponent implements OnInit {
   ngOnInit() {
   }
   addGame(title, platform, genre, rating, publisher, release){
-    this.gameService.addGame(title,platform, genre, rating, publisher, release)
+    this.gameService.addGame(title,platform, genre, rating,status, publisher, release)
                     .subscribe(()=>{
                       console.log("asd");
-                      this.router.navigate(['/adminMainPage']);
+                      this.router.navigate(['/admin/main']);
                     })
   }
 }

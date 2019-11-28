@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import player from './models/player';
 import game from './models/game';
+import admin from './models/admin';
 import authRouter from './routes/auth';
 import verifyToken from './routes/verifyToken';
 
@@ -189,6 +190,20 @@ router.route('/join_game/:id').post((req,res)=>{
       }
   });
 });
+
+// Get admin users
+router.route('/admins').get((req, res)=>{
+  admin.find((err, admins) =>
+  {
+    if (err)
+      console.log(err);
+    else 
+      res.json(admins);
+  });
+});
+
+// Register a new admin
+
 app.use('/', router);
 
 app.use('/admin', authRouter);

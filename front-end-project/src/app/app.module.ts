@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, 
-  MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
+  MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule, MatPaginatorModule, MatTabsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,6 @@ import { UpdateGameComponent } from './components/admin/update-game/update-game.
 
 import {PlayerService} from './player.service';
 import { GameComponent } from './components/game/game.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginService } from './login.service';
 import { GameService } from './game.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +51,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatTabsModule,
     FormsModule,
     AppRoutingModule
   ],
@@ -64,8 +65,7 @@ import { AppRoutingModule } from './app-routing.module';
     AddPlayerComponent,
     EditPlayerComponent,
     GameConfigureComponent,
-    GameComponent,
-    DashboardComponent
+    GameComponent
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent]

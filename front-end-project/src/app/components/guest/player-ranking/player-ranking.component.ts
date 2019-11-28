@@ -39,12 +39,9 @@ export class PlayerRankingComponent implements OnInit {
         this.Player_to_display = data; 
         this.dataSource = new MatTableDataSource(this.Player_to_display as any);
         this.dataSource.paginator = this.paginator;
-        this.sort.active="ranking";
-        this.sort.direction ='asc';
         this.dataSource.sort = this.sort;
     });
   }
-
   applyFilter(value: String){
     this.dataSource.filter = value.trim().toLowerCase();
   }

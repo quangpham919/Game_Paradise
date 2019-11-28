@@ -44,7 +44,7 @@
 
       <mat-divider></mat-divider>
       <br><br>
-      <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
+      <button class='btn-back' mat-raised-button color='accent' routerLink='/admin/main'>Back</button>
       <button class='btn-submit' type='submit' (click)="updateGame(title.value,platform.value,genre.value,rating.value,publisher.value,release.value,status.value)" [disabled]='updateForm.pristine || updateForm.invalid' mat-raised-button color='primary'>Update</button>
       
     </form>
