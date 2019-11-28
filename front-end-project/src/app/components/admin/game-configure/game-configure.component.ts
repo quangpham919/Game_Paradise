@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 
-import {MatTableDataSource} from '@angular/material'
-
+import {MatTableDataSource,MatPaginator} from '@angular/material'
+import {MatSort} from '@angular/material/sort';
 import{GameService} from '../../../game.service';
 import {game} from '../../../game.model';
 
@@ -15,22 +15,28 @@ import {game} from '../../../game.model';
 })
 export class GameConfigureComponent implements OnInit {
 
+  game_to_display : any = [];
   columns_to_display = ['Title','Platform','Genre','Rating','Publisher','Release','Status','Action'];
   dataSource: MatTableDataSource<game>;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private gameService: GameService, private router : Router) { }
-
+  
+  constructor(private gameService: GameService, private router : Router) { 
+  this.fetchGame();
+  }
   ngOnInit() {
-    this.fetchGame();
+   
   }
 
   fetchGame(){
     this.gameService  
     .getGames()
-    .subscribe((data : MatTableDataSource<game>)=>{
-      this.dataSource = data;  
-      console.log("Requested game....");
-      console.log(this.dataSource);
+    .subscribe((data : game[])=>{
+      this.game_to_display = data;
+      this.dataSource = new MatTableDataSource<game>(this.game_to_display as any);
+      this.dataSource.paginator =this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -38,12 +44,17 @@ export class GameConfigureComponent implements OnInit {
     this.router.navigate([`/update_game/${id}`]);
   }
 
+ 
+
   deleteGame(id){
     this.gameService.deleteGame(id).subscribe(()=>{
       this.fetchGame();
     });
   }
 
-
+  //Apply filter for filter bar in html page
+  applyFilter(value: String){
+    this.dataSource.filter = value.trim().toLowerCase();
+  }
 
 }
