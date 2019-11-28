@@ -18,43 +18,43 @@ import {PlayerService} from '../../../player.service';
 })
 export class AdminMainPageComponent implements OnInit {
 
-  columns_to_display: string[] =['name','ranking', 'score','action'];
+  columns_to_display: string[] =['name', 'ranking', 'score', 'action'];
   dataSource: MatTableDataSource<player>;
-  
+
 
 
   constructor(private playerService: PlayerService, private router : Router) {
 
-  } 
+  }
 
   ngOnInit() {
     this.fetchPlayer();
-    
+
     }
 
   fetchPlayer(){
-    this.playerService  
+    this.playerService
         .getPlayers()
         .subscribe((data : MatTableDataSource<player>)=>{
-          this.dataSource = data;  
+          this.dataSource = data;
           console.log("Requested players....");
           console.log(this.dataSource);
         });
   }
 
   editPlayer(id){
-    this.router.navigate([`/update_player/${id}`]);
+    this.router.navigate([`admin/update_player/${id}`]);
   }
 
   deletePlayer(id){
-    this.playerService.deletePlayer(id).subscribe(()=>{
+    this.playerService.deletePlayer(id).subscribe(() => {
       this.fetchPlayer();
     });
   }
   applyFilter(filterValue: String){
     console.log("I got "+filterValue);
-    this.dataSource.filter= filterValue.trim().toLowerCase();
-    
-  } 
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  }
 }
 
