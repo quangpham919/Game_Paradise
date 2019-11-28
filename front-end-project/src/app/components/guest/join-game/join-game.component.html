@@ -11,7 +11,7 @@
           
           <mat-form-field class="field-half-width">
               <mat-label>Ranking: </mat-label>
-              <input matInput [value]="Player.ranking" formControlName="ranking" readonly >
+              <input matInput [value]="Player.ranking" formControlName="ranking"  readonly >
           </mat-form-field>
           
           <mat-form-field class="field-half-width">
@@ -39,7 +39,7 @@
           
           <mat-divider></mat-divider>
           <br><br>
-          <button class='btn-back' mat-raised-button color='accent' routerLink='/gamelobby'>Back</button>
+          <button class='btn-back' mat-raised-button color='accent' routerLink='/gamelobby' >Back</button>
           <button class='btn-submit' type='submit' (click)="JoinGame(game_played.value)" [disabled]='joinGame.pristine || joinGame.invalid' mat-raised-button color='primary' >Join </button>
           
         </form>

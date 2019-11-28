@@ -18,6 +18,7 @@ export class JoinGameComponent implements OnInit {
   Player : any ={};
   joinGame: FormGroup;
   listOfGames: game[];
+
   constructor(private gameService: GameService, private playerService: PlayerService, private router: Router, private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder) {
       this.fetchGame();
       this.joinGame = this.formBuilder.group({
@@ -31,6 +32,7 @@ export class JoinGameComponent implements OnInit {
    }
    
   ngOnInit() {
+    
     this.route.params.subscribe(params =>{
         this.id = params.id;
         this.playerService.getPlayerById(this.id).subscribe(res =>{

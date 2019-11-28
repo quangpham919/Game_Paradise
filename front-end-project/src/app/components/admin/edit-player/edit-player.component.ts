@@ -63,8 +63,6 @@ export class EditPlayerComponent implements OnInit {
         this.old_status = this.Player.status;
         this.old_favGame = this.Player.favGame;
         this.old_gamePlayed = this.Player.gamePlayed;
-      
-        console.log(this.old_gamePlayed);
       });
       
     });

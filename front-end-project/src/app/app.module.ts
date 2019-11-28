@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule}from '@angular/forms';
 
-import {MatGridListModule,MatDatepickerModule,MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule,MatTabsModule} from '@angular/material';
+import {MatDialogModule,MatPaginatorModule,MatSortModule ,MatGridListModule,MatDatepickerModule,MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule,MatTabsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -67,8 +67,17 @@ const routes: Routes= [
     MatSnackBarModule,
     MatTabsModule,
     MatGridListModule,
-    MatDatepickerModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatDialogModule
     
+  ],
+  entryComponents:[
+    JoinGameComponent
+  ],
+  exports:[
+    MatSortModule
   ],
   
   providers: [PlayerService,

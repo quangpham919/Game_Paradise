@@ -21,7 +21,7 @@
         </mat-form-field>
         
         <mat-form-field class="field-full-width">
-            <input matInput placeholder="Score" formControlName="score" #score>
+            <input  matInput placeholder="Score" formControlName="score" disabled #score>
         </mat-form-field>
         
         <mat-form-field class="field-full-width">
@@ -37,9 +37,10 @@
             </mat-select> 
         </mat-form-field>
 
+
         <mat-form-field class="field-full-width">
           <mat-label>Choose game had been played: </mat-label>
-          <mat-select formControlName='game_played' [(value)]='this.old_gamePlayed'  #game_played>
+          <mat-select formControlName='game_played' [(value)]='this.old_gamePlayed' disabled #game_played>
             <mat-option *ngFor='let element of listOfGames'
                         [value]=element.title>{{element.title}} </mat-option>    
           </mat-select> 
