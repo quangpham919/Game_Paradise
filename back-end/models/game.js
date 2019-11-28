@@ -17,7 +17,7 @@ let game = new Schema ({
     },
     
     rating : {
-      type : String
+      type : Number
     },
 
     publisher: {

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MatTableDataSource,MatPaginator} from '@angular/material';
-import {JoinGameComponent} from '../join-game/join-game.component';
 import {MatSort} from '@angular/material/sort';
 import {player} from '../../../player.model';
 import {game} from '../../../game.model';

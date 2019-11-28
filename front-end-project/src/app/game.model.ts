@@ -3,7 +3,7 @@ export interface game{
   title: String;
   platform : String;
   genre: String;
-  rating: String;
+  rating: Number;
   publisher: String;
   release: Number;
   status:String;
