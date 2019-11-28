@@ -1,6 +1,7 @@
 <mat-toolbar class='header-main-page' color='primary'>
-  <a href="/gamelobby"><span class='title-welcome'> Welcome to my game </span></a>
+  <span class='title-welcome' [routerLink]="['/']" routerLinkActive="router-link-active" > Gamer Paradise </span>
 </mat-toolbar>
-<div> 
-  <router-outlet></router-outlet>
+<div>
+    <router-outlet></router-outlet>
 </div>
+

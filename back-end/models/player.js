@@ -5,10 +5,12 @@ const Schema = mongoose.Schema;
 
 let player = new Schema({
   name:{
-    type: String
+    type: String,
+    required: true
   },
   ranking:{
-    type : Number
+    type : Number,
+    required: true
   },
   score: {
     type : Number,

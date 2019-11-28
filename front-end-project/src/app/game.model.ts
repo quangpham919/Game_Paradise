@@ -1,10 +1,10 @@
 export interface game{
   id: String;
   title: String;
-  platform : String;
+  platform: String;
   genre: String;
-  rating: String;
+  rating: Number;
   publisher: String;
   release: Number;
-  status:String;
+  status: String;
 }

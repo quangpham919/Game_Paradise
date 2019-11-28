@@ -18,14 +18,14 @@ export class PlayerService {
     return this.http.get(`${this.uri}/player/${id}`);
   }
 
-  addPlayer(name, ranking, score, time,status,favGame){
+  addPlayer(name, ranking, score, time, games, status) {
     const player_to_add = {
         name: name,
-        ranking : ranking,
-        score : score,
-        favGame: favGame,
-        time:time,
-        status:status
+        ranking: ranking,
+        score: score,
+        time: time,
+        games: games,
+        status: status
     };
     return this.http.post(`${this.uri}/player/add`, player_to_add);
   }

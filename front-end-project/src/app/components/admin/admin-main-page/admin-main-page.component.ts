@@ -31,11 +31,11 @@ export class AdminMainPageComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPlayer();
-    
+
     }
 
   fetchPlayer(){
-    this.playerService  
+    this.playerService
         .getPlayers()
         .subscribe((data : MatTableDataSource<player>)=>{
           this.dataSource = data;
@@ -47,14 +47,18 @@ export class AdminMainPageComponent implements OnInit {
 
 
   editPlayer(id){
-    this.router.navigate([`/update_player/${id}`]);
+    this.router.navigate([`admin/update_player/${id}`]);
   }
 
   deletePlayer(id){
-    this.playerService.deletePlayer(id).subscribe(()=>{
+    this.playerService.deletePlayer(id).subscribe(() => {
       this.fetchPlayer();
     });
   }
- 
+  applyFilter(filterValue: String){
+    console.log("I got "+filterValue);
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  }
 }
 

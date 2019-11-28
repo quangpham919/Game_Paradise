@@ -32,19 +32,19 @@ export class EditPlayerComponent implements OnInit {
     this.createForm();
     this.fetchGame();
   }
-  
+
   createForm(){
     this.updateForm = this.formBuilder.group({
-      name: ['',],
-      ranking:['',],
-      score: ['', ],
-      favGame:['',],
-      time : [''],
-      game_played:[''],
-      status:['',]
+      name: ['',Validators.required],
+      ranking:['',Validators.required],
+      score: ['', Validators.required],
+      favGame:['',Validators.required],
+      time : ['',Validators.required],
+      game_played:['',Validators.required],
+      status:['',Validators.required]
     });
   }
-  
+
 
   ngOnInit() {
     this.route.params.subscribe(params=>{
@@ -81,10 +81,10 @@ export class EditPlayerComponent implements OnInit {
   updatePlayer(name,ranking,score,time,status,favGame,gamePlayed){
     
     this.playerService.updatePlayer(name,ranking,score,time,status,favGame,this.id,gamePlayed).subscribe(()=>{
-      this.router.navigate(['/adminMainPage']);
       this.snackBar.open("Player has been updated successfully!!!", "OK", {
         duration: 3000
       });
+      this.router.navigate(['/adminMainPage']);
     });
   }
 }
