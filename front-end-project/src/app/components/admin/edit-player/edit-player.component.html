@@ -24,12 +24,12 @@
             <input matInput placeholder="Score" formControlName="score" #score>
         </mat-form-field>
 
-        <mat-form-field class="field-full-width">
+        <!-- <mat-form-field class="field-full-width">
           <input matInput placeholder="Time" value={{today | date='medium'}} formControlName="time" #time>
-        </mat-form-field>
+        </mat-form-field> -->
 
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="Favorite Game" formControlName="favorGame" #favoGame>
+          <input matInput placeholder="Favorite Game" formControlName="favoGame" #favoGame>
         </mat-form-field>
 
         <mat-form-field class="field-option">
@@ -43,7 +43,7 @@
 
         <mat-divider></mat-divider>
         <br><br>
-        <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
+        <button class='btn-back' mat-raised-button color='accent' routerLink='/admin/main'>Back</button>
         <button class='btn-submit' type='submit' (click)="updatePlayer(name.value, ranking.value, score.value, time.value, favoGame.value,status.value)" [disabled]='updateForm.pristine || updateForm.invalid' mat-raised-button color='primary'>Update</button>
       </form>
     </mat-card>
