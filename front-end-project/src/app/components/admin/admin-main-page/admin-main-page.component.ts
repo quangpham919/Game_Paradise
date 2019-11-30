@@ -34,7 +34,6 @@ export class AdminMainPageComponent implements OnInit {
 
   ngOnInit() {
     
-    
     }
 
   fetchPlayer(){
@@ -44,8 +43,6 @@ export class AdminMainPageComponent implements OnInit {
           this.Player = data;
           this.dataSource = new MatTableDataSource<player>(this.Player as any);
           this.dataSource.paginator = this.paginator;
-          this.sort.active="ranking";
-          this.sort.direction ='asc';
           this.dataSource.sort = this.sort;
         });
   }

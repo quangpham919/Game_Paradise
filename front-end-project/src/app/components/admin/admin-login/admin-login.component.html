@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>Admin Login</mat-card-title>
+    <mat-card-title>Login</mat-card-title>
     <mat-card-content>
       <form class="example-form">
         <mat-form-field class="example-full-width">
@@ -30,7 +30,7 @@
         <br>
         <br>
         <button mat-raised-button color="primary" type="submit" (click)="login(email.value, password.value)">Login</button>
-        <button mat-raised-button color="accent" [routerLink]="['/admin/main']">Cancel</button>
+        <button mat-raised-button color="accent" [routerLink]="['/dashboard']">Cancel</button>
       </form>
     </mat-card-content>
   </mat-card>

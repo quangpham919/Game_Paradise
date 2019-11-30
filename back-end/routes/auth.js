@@ -41,17 +41,23 @@ router.post('/register',verifyToken, async (req, res)=> {
 });
 
 router.post('/login',async (req, res) =>{
-    const {error} = loginValidation(req.body.admin);
+    const {error} = loginValidation(req.body);
     if(error) { 
         return res.status(400).send(error.details[0].message);
     } 
     // Checking if the email exists
-    const admin = await Admin.findOne({email: req.body.admin.email});
-    if(!admin){
-        return res.status(400).send('Email or password is wrong');
-    } 
+    const userData = req.body;
+    const admin = await Admin.findOne({email: userData.email},(error, admin) => {
+        if(error){
+            console.log(error)
+        }else{
+            if(!admin){
+                return res.status(401).send('Email or password is invalid');
+            }
+        }
+    }); 
     // Check if password is correct
-    const passwordCorrect = await bcrypt.compare(req.body.admin.password, admin.password);
+    const passwordCorrect = await bcrypt.compare(userData.password, admin.password);
     if(!passwordCorrect){
         return res.status(400).send('Invalid credentials');
     } 

@@ -46,8 +46,9 @@ export class AdminLoginComponent implements OnInit {
   }
 
   login(email, password){
-    console.log(email + ' ' + password);
-    this.loginService.login(email,password)
-    this.router.navigate(['/admin/main'])
+    this.loginService.login(email,password).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   };
 }

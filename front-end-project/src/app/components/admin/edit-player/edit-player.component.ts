@@ -84,7 +84,7 @@ export class EditPlayerComponent implements OnInit {
       this.snackBar.open("Player has been updated successfully!!!", "OK", {
         duration: 3000
       });
-      this.router.navigate(['/adminMainPage']);
+      this.router.navigate(['/admin/main']);
     });
   }
 }

@@ -10,11 +10,7 @@ export class LoginService {
   constructor(private http: HttpClient ) { }
 
   login(email, password) {
-    const admin = {
-      email: email,
-      password: password
-    }
-    return this.http.post(`${this.uri}/admin/login`, admin);
+    return this.http.post<any>(`${this.uri}/admin/login`, {email, password});
   }
 
   update(name, email, password) {

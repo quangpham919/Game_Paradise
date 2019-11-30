@@ -102,7 +102,7 @@ router.route('/player/delete/:id').get(verifyToken,(req,res)=>{
 
 //GAME
 //get all games 
-router.route('/games').get(verifyToken,(req, res)=>{
+router.route('/games').get((req, res)=>{
   game.find((err, games) =>
   {
     if (err)
