@@ -10,17 +10,25 @@ import { AdminMainPageComponent } from './components/admin/admin-main-page/admin
 import { AddPlayerComponent } from './components/admin/add-player/add-player.component';
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
+import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component';
+import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
+import { AddGameComponent } from './components/admin/add-game/add-game.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 const appRoutes: Routes = [
   {path: '**', redirectTo: '404'},
-  {path: 'admin/add-player', component: AddPlayerComponent},
   {path: 'admin/login', component: AdminLoginComponent},
-  {path: 'admin/update_player/:id', component: EditPlayerComponent},
-  {path: 'admin/main', component: AdminMainPageComponent},
-  {path:'dashboard',component:PlayerRankingComponent},
-  {path:'admin/add-game',component:GameConfigureComponent},
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
+  {path:'admin/register',component:AdminRegisterComponent, canActivate: [AuthGuard]},
+  {path:'admin/add_game',component:AddGameComponent, canActivate: [AuthGuard]},
+  {path: 'admin/update_game/:id',component: UpdateGameComponent, canActivate: [AuthGuard]},
+  {path: 'admin/add-player', component: AddPlayerComponent, canActivate: [AuthGuard]},
+  {path: 'admin/update_player/:id', component: EditPlayerComponent, canActivate: [AuthGuard]},
+  {path: 'admin/main', component: AdminMainPageComponent, canActivate: [AuthGuard]},
+  {path:'join_game/:id',component:JoinGameComponent},
+  {path:'gamelobby',component:PlayerRankingComponent},
+
+  {path: '', redirectTo: '/gamelobby', pathMatch: 'full'}
 ];
 
 @NgModule({

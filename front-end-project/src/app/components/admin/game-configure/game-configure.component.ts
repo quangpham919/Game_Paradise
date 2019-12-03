@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 import {MatTableDataSource,MatPaginator} from '@angular/material'
 import {MatSort} from '@angular/material/sort';
-import{GameService} from '../../../game.service';
+import{GameService} from '../../../services/game.service';
 import {game} from '../../../game.model';
 
 
@@ -41,7 +41,7 @@ export class GameConfigureComponent implements OnInit {
   }
 
   editGame(id){
-    this.router.navigate([`/update_game/${id}`]);
+    this.router.navigate([`/admin/update_game/${id}`]);
   }
 
  

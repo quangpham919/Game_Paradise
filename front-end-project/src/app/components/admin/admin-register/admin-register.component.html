@@ -1,0 +1,48 @@
+<div class="container">
+    <mat-card>
+      <mat-card-title>Add new admin</mat-card-title>
+      <mat-card-content>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" [formControl]="nameFormControl" [errorStateMatcher]="matcher" #name/>
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" #email/>
+            <mat-error *ngIf="
+                    emailFormControl.hasError('email') &&
+                    !emailFormControl.hasError('required')
+                  ">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl"
+              [errorStateMatcher]="matcher" #password />
+            <mat-hint>Min 8 characters | At least 1 uppercase letter | At least 1 digit</mat-hint>
+            <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+              Password must be at least <strong>8 characters</strong>
+              <br>
+              Password must have at least <strong>1 uppercase letter</strong>
+              <br>
+              Password must have at least <strong>1 number</strong>
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <br>
+          <br>
+          <button mat-raised-button color="accent" *ngIf="!isLoading" type="submit" (click)="register(name.value, email.value, password.value)">Sign Up</button>
+          <mat-spinner *ngIf="isLoading"></mat-spinner>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

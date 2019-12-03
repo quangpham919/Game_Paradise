@@ -1,0 +1,24 @@
+.example-form {
+    min-width: 300px;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    width:100%
+  }
+  
+  .container div{
+    width: 400px;
+    height: 100px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  

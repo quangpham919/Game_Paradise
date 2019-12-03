@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title>Admin Login</mat-card-title>
     <mat-card-content>
       <form class="example-form">
         <mat-form-field class="example-full-width">
@@ -19,18 +19,16 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl"
             [errorStateMatcher]="matcher" #password />
-          <mat-hint>Min 8 characters</mat-hint>
-          <mat-error *ngIf="passwordFormControl.hasError('minlength')">
-            Password must be at least <strong>8 characters</strong>
-          </mat-error>
-          <mat-error *ngIf="passwordFormControl.hasError('required')">
-            Password is <strong>required</strong>
-          </mat-error>
+            <mat-hint>Min 8 characters | At least 1 uppercase letter | At least 1 digit</mat-hint>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
         <br>
         <br>
-        <button mat-raised-button color="primary" type="submit" (click)="login(email.value, password.value)">Login</button>
-        <button mat-raised-button color="accent" [routerLink]="['/dashboard']">Cancel</button>
+        <br>
+        <button mat-raised-button *ngIf="!isLoading" color="accent" type="submit" (click)="login(email.value, password.value)">Login</button>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
       </form>
     </mat-card-content>
   </mat-card>

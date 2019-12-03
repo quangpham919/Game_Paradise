@@ -1,6 +1,23 @@
 <mat-toolbar class='header-main-page' color='primary'>
-  <span class='title-welcome' [routerLink]="['/dashboard']" routerLinkActive="router-link-active" > GamerParadise </span>
-  <!-- <span class='float-right' [routerLink]="['/admin/login']">Login</span> -->
+  <span class='title-welcome' [routerLink]="['/gamelobby']" routerLinkActive="router-link-active" > GamerParadise </span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated">
+          <a mat-button routerLink="/admin/main" routerLinkActive="mat-accent">Dashboard</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/gamelobby" routerLinkActive="mat-accent">Lobby</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+        <a mat-button routerLink="/admin/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/admin/register" routerLinkActive="mat-accent">Add new admin</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+        <a mat-button (click)="onLogout()" routerLinkActive="mat-accent">Logout</a>
+    </li>
+  </ul>
 </mat-toolbar>
 <div>
     <router-outlet></router-outlet>

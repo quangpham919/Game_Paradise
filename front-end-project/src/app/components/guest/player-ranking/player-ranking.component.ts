@@ -4,8 +4,8 @@ import {MatTableDataSource,MatPaginator} from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import {player} from '../../../player.model';
 import {game} from '../../../game.model';
-import {GameService} from '../../../game.service';
-import {PlayerService} from '../../../player.service';
+import {GameService} from '../../../services/game.service';
+import {PlayerService} from '../../../services/player.service';
 
 
 @Component({

@@ -31,11 +31,20 @@
             <input matInput 
             placeholder="Release" formControlName="release" #release>
         </mat-form-field>
+        <mat-form-field class="field-option">
+                <mat-label>Status </mat-label>
+                <mat-select matNativeControl formControlName='status' #status>
+                  <mat-option value='Active'>Active</mat-option> 
+                  <mat-option value='Inactive'>Inactive</mat-option>   
+                </mat-select> 
+        </mat-form-field>
   
         <mat-divider></mat-divider>
         <br><br>
-        <button class='btn-back' mat-raised-button color='accent' routerLink='/adminMainPage'>Back</button>
-        <button class='btn-submit' type='submit' (click)="addGame(title.value,platform.value,genre.value,rating.value,publisher.value,release.value)" [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Save</button>
+        <button class='btn-back' mat-raised-button color='accent' routerLink='/admin/main'>Back</button>
+        <button class='btn-submit' type='submit' (click)="addGame(title.value, platform.value, genre.value, rating.value, 
+                                                                    publisher.value, release.value, status.value)"
+                 [disabled]='createForm.pristine || createForm.invalid' mat-raised-button color='primary'>Save</button>
         
       </form>
     </mat-card>

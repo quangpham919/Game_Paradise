@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import {LoginService} from '../../../login.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
-import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
+import { Subscription } from 'rxjs';
 
 
 export class CustomErrorMatcher implements ErrorStateMatcher{
+
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
@@ -20,18 +21,20 @@ export class CustomErrorMatcher implements ErrorStateMatcher{
 })
 
 
-export class AdminLoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit, OnDestroy {
   hide = true;
+  isLoading = false;
+  private authStatusSub: Subscription;
   // Create an email form control
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-   // Create an password form control
+   // Create a password form control
   passwordFormControl = new FormControl('', [
     Validators.required,
-    Validators.email,
-    Validators.minLength(8)
+    Validators.minLength(8),
+    Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.{8,})')
   ]);
 
   // Create an instance of CustomErrorMatcher class
@@ -40,15 +43,21 @@ export class AdminLoginComponent implements OnInit {
 
   email: String;
   password: String;
-  constructor(private router: Router, private loginService:LoginService) { }
+  constructor(private router: Router, private authService:AuthenticationService) { }
 
   ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
   }
 
   login(email, password){
-    this.loginService.login(email,password).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
+    this.isLoading = true;
+    this.authService.login(email, password);
   };
+  ngOnDestroy(){
+    this.authStatusSub.unsubscribe();
+  }
 }

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
-import {MatToolbarModule,MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,MatIconModule,MatButtonModule, 
-  MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule, MatPaginatorModule, MatTabsModule} from '@angular/material';
+import {MatToolbarModule, MatFormFieldModule, MatInputModule, 
+        MatOptionModule, MatSelectModule, MatIconModule,
+        MatButtonModule, MatCardModule, MatTableModule,
+        MatDividerModule,MatSnackBarModule, MatPaginatorModule, 
+        MatTabsModule, MatProgressSpinnerModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -16,23 +18,22 @@ import { AdminMainPageComponent } from './components/admin/admin-main-page/admin
 import { AddPlayerComponent } from './components/admin/add-player/add-player.component';
 import { EditPlayerComponent } from './components/admin/edit-player/edit-player.component';
 import { GameConfigureComponent } from './components/admin/game-configure/game-configure.component';
-import { AddGameComponent } from './components/admin/add-game/add-game.component';
-import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
+import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component'
+// import { AddGameComponent } from './components/admin/add-game/add-game.component';
+// import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
 
 
-import {PlayerService} from './player.service';
-import { GameComponent } from './components/game/game.component';
-import { LoginService } from './login.service';
-import { GameService } from './game.service';
+import {PlayerService} from './services/player.service';
+import { AuthenticationService } from './services/authentication.service';
+import { GameService } from './services/game.service';
 import { AppRoutingModule } from './app-routing.module';
+import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
+import { AddGameComponent } from './components/admin/add-game/add-game.component';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { AuthGuard } from './services/auth.guard';
+;
 
-// const appRoutes: Routes = [
-//   {path: '404', redirectTo: '404'},
-//   {path: 'add_player', component: AddPlayerComponent},
-//   {path: 'update_player/:id', component: EditPlayerComponent},
-//   {path: 'adminMainPage', component: AdminMainPageComponent},
-//   {path: '', redirectTo: '/adminMainPage', pathMatch: 'full'}
-// ]
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatTableModule,
     MatIconModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatDividerModule,
     MatSnackBarModule,
     MatPaginatorModule,
@@ -65,9 +67,13 @@ import { AppRoutingModule } from './app-routing.module';
     AddPlayerComponent,
     EditPlayerComponent,
     GameConfigureComponent,
-    GameComponent
+    UpdateGameComponent,
+    AdminRegisterComponent,
+    AddGameComponent
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, GameService, AuthenticationService,
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard,
+              {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

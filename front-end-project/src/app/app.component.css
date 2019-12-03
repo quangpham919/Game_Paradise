@@ -9,3 +9,17 @@
 .header-main-page{
   background-color:primary;
 }
+ul li{
+  text-decoration: none;
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+ul{
+  display: flex;
+}
+.spacer{
+  flex:1 1 auto;
+}
+

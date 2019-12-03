@@ -9,8 +9,8 @@ import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 import {player} from '../../../player.model'
 import {game} from '../../../game.model'
 
-import {GameService} from '../../../game.service';
-import {PlayerService} from '../../../player.service';
+import {GameService} from '../../../services/game.service';
+import {PlayerService} from '../../../services/player.service';
 
 
 

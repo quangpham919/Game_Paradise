@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PlayerService} from '../../../player.service';
-import {GameService} from '../../../game.service';
+import {PlayerService} from '../../../services/player.service';
+import {GameService} from '../../../services/game.service';
 import {FormGroup,FormBuilder, Validator, Validators} from '@angular/forms';
 import {Router} from'@angular/router';
 import { game } from '../../../game.model';

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {PlayerService} from '../../../player.service';
-import {GameService} from '../../../game.service';
+import {PlayerService} from '../../../services/player.service';
+import {GameService} from '../../../services/game.service';
 import {game} from '../../../game.model';
-import {player} from '../../../player.model';
 import {Router,ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-
 import {MatSnackBar} from '@angular/material';
 
 
@@ -27,7 +25,8 @@ export class EditPlayerComponent implements OnInit {
   listOfGames:game[];
   
   
-  constructor(private gameService : GameService, private playerService : PlayerService, private router: Router,private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) { 
+  constructor(private gameService : GameService, private playerService : PlayerService, private router: Router,
+              private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder: FormBuilder ) { 
     this.player_ranking=[1,2,3,4,5,6,7,8,9,10];
     this.createForm();
     this.fetchGame();

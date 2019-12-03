@@ -3,7 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, Validators, Form} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { GameService } from 'src/app/game.service';
+import { GameService } from 'src/app/services/game.service';
 import {game} from '../../../game.model';
 
 @Component({
@@ -19,7 +19,8 @@ export class UpdateGameComponent implements OnInit {
   old_status: String;
   
 
-  constructor(private gameService: GameService, private router : Router, private route: ActivatedRoute, private snackBar : MatSnackBar, private formBuilder : FormBuilder  ) {
+  constructor(private gameService: GameService, private router : Router, private route: ActivatedRoute, 
+                              private snackBar : MatSnackBar, private formBuilder : FormBuilder  ) {
       this.createFrom();
       
    }
