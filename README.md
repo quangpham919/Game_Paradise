@@ -1,9 +1,8 @@
-[![Build Status](https://travis-ci.org/tylrtnguyen/Full_Stack_Project.svg?branch=clean-code-and-login)](https://travis-ci.org/tylrtnguyen/Full_Stack_Project)
+[![Build Status](https://travis-ci.com/quangpham919/Full_Stack_Project.svg?branch=master)](https://travis-ci.com/quangpham919/Full_Stack_Project)
 
-Hello World 
-list task done:
-frontend: admin list, add ,upload, delete player
-backend : player model 
-Admin 1:
-email: osama.pyranama@gmail.com
-password: Osama123
+### GameLobby CRUD Application with JWT Authentication
+Student ID | Member  | Repo Link 
+--- | --- | ---
+101136246 | Quang Pham | [Link to GitHub]('https://github.com/quangpham919')
+101140366 | Thong Ba | [Link to GitHub]('https://github.com/tylrtnguyen')
+101153320 | Vivek Ketankumar Vaidya | [Link to GitHub]('https://google.com)
