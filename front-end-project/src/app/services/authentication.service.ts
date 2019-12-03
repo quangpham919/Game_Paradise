@@ -29,7 +29,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(email: string, password: string) {
-    return this.http.post<{token: string, expiresIn: number}>(`/api/admin/login`, {email, password})
+    return this.http.post<{token: string, expiresIn: number}>(`${this.uri}/login`, {email, password})
                     .subscribe(res => {
                       const token = res.token;
                       this.token = token;
@@ -50,7 +50,7 @@ export class AuthenticationService {
   }
 
   register(name, email, password){
-    return this.http.post(`/api/admin/login`,{name, email, password}).subscribe(() =>{
+    return this.http.post(`${this.uri}/login`,{name, email, password}).subscribe(() =>{
         this.router.navigate(['/admin/main']);
     }, error => {
       this.authStatusListener.next(false);

@@ -7,15 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlayerService {
 
-  uri = 'http://localhost:4000';
+  uri = 'http://localhost:4000/api/player';
   constructor(private http: HttpClient ) { }
 
   getPlayers(){
-    return this.http.get(`/api/player/all`);
+    return this.http.get(`${this.uri}/all`);
   }
 
   getPlayerById(id){
-    return this.http.get(`/api/player/${id}`);
+    return this.http.get(`${this.uri}/${id}`);
   }
 
   addPlayer(name, ranking, score, time, games, status) {
@@ -27,7 +27,7 @@ export class PlayerService {
         games: games,
         status: status
     };
-    return this.http.post(`/api/player/add`, player_to_add);
+    return this.http.post(`${this.uri}/add`, player_to_add);
   }
 
   updatePlayer(name, ranking, score,time,status,favGame, id,gamePlayed){
@@ -41,11 +41,11 @@ export class PlayerService {
         gamePlayed:gamePlayed
         
     };
-    return this.http.post(`/api/player/update/${id}`, player_to_update);
+    return this.http.post(`${this.uri}/update/${id}`, player_to_update);
   }
 
   deletePlayer(id){
-    return this.http.get(`/api/player/delete/${id}`);
+    return this.http.get(`${this.uri}/delete/${id}`);
   }
 
   joinGame(status,gamePlayed,id){
@@ -53,7 +53,7 @@ export class PlayerService {
       gamePlayed : gamePlayed,
       status : status
     };
-    return this.http.post(`/api/player/join_game/${id}`,player_to_update)
+    return this.http.post(`${this.uri}/join_game/${id}`,player_to_update)
   }
 
   

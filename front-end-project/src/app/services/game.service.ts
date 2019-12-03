@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class GameService {
-  uri = 'http://localhost:4000';
+  uri = 'http://localhost:4000/api/game';
   constructor(private http: HttpClient, private router: Router) { }
 
   getGames(){
-    return this.http.get(`/api/game/all`);
+    return this.http.get(`${this.uri}/all`);
   }
 
   getGameById(id){
-    return this.http.get(`/api/game/${id}`);
+    return this.http.get(`${this.uri}/${id}`);
   }
 
   addGame(title, platform, genre, rating, publisher, release, status) {
@@ -27,7 +27,7 @@ export class GameService {
         release: release,
         status: status
     };
-    return this.http.post(`/api/game/add`, game_to_add)
+    return this.http.post(`${this.uri}/add`, game_to_add)
     .subscribe(()=>{
       this.router.navigate(['/admin/main']);
     });
@@ -44,10 +44,10 @@ export class GameService {
         release: release,
         status: status
     };
-    return this.http.post(`/api/game/update/${id}`, game_to_update);
+    return this.http.post(`${this.uri}/update/${id}`, game_to_update);
   }
 
   deleteGame(id){
-    return this.http.get(`/api/game/delete/${id}`);
+    return this.http.get(`${this.uri}/delete/${id}`);
   }
 }
