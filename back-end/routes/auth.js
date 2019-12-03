@@ -23,7 +23,7 @@ router.post('/register',verifyToken, async (req, res)=> {
     // Hash password section
     // 1. Salting
     const salt = await bcrypt.genSalt(10);
-    // 2. Hash Password
+    // 2. Hashing
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
     // Create a new user
@@ -34,7 +34,9 @@ router.post('/register',verifyToken, async (req, res)=> {
     });
     try{
         const savedAdmin = await admin.save();
-        res.send(savedAdmin._id);
+        res.status(201).json({
+            message: `Admin ${savedAdmin.name} already saved`
+        });
     } catch(err){
         res.status(400).send(err);
     }
@@ -62,9 +64,34 @@ router.post('/login',async (req, res) =>{
         return res.status(400).send('Invalid credentials');
     } 
     // Create and assign token
-    const token = jwt.sign({_id: admin._id},process.env.ACCESS_TOKEN_SECRET);
-    res.header('auth_token', token);
-    res.send('Logged In');
+    const token = jwt.sign({_id: admin._id, email: admin.email},
+                            process.env.ACCESS_TOKEN_SECRET,
+                            { expiresIn: '1h' });
+    res.status(200).json({
+        token: token,
+        expiresIn: '3600',
+        status: 'Logged In'
+    });
 })
 
+// Get admin users
+router.route('/all').get((req, res)=>{
+    Admin.find((err, admins) =>
+    {
+      if (err)
+        console.log(err);
+      else 
+        res.json(admins);
+    });
+  });
+
+ // Delete admin users
+ router.route('/delete/:id').get((req,res)=>{
+    Admin.findByIdAndRemove({_id: req.params.id}, (err,Admin)=>{
+        if(err)
+          res.json(err);
+        else
+          res.json('Admin removed successfully!')
+      });
+ }) 
 module.exports = router;

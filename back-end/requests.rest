@@ -1,11 +1,22 @@
-POST http://localhost:4000/admin/login
+POST http://localhost:4000/api/admin/login
 Content-Type: application/json
 
 {
-    "email": "osama.pyranama@gmail.com",
-    "password":"Osama123"
+    "email": "quangpham9199@gmail.com",
+    "password":"Quangpham919"
 }
 
 ###
-GET http://localhost:4000/admins
+GET http://localhost:4000/api/game/all
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGQyZGU1NTg5ZDk1MDZkZmFjZTMxNGYiLCJpYXQiOjE1NzQxMDQ2MzZ9.1YV5p2laupEt7NsxCIN0g3EZ2E5wvcQOFl8X-1thGVM
+
+###
+
+GET http://localhost:4000/api/admin/delete/5dd2de5589d9506dface314f
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGQyZGU1NTg5ZDk1MDZkZmFjZTMxNGYiLCJpYXQiOjE1NzQxMDQ2MzZ9.1YV5p2laupEt7NsxCIN0g3EZ2E5wvcQOFl8X-1thGVM
+
+// email: kevin@email.com
+// password: Keven2019
+
+// email: admin@email.com
+// password: Admin2019

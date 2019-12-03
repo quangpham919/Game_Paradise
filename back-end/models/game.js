@@ -29,9 +29,7 @@ let game = new Schema ({
 
     status: {
       type : String,
-      default: 'Active'
     }
-    
 })
 
 export default mongoose.model('game',game);
