@@ -9,7 +9,7 @@ Student ID | Member  | Repo Link
 
 ### How to run application locally
 #### By default
-- git clone <URL>
+- git clone --URL 
 - cd back-end
 - npm install
 - npm run dev
@@ -18,5 +18,6 @@ Student ID | Member  | Repo Link
 - npm install
 - ng serve --open
 #### Using heroku
+- git clone
 - cd front-end-project
 - heroku local web
