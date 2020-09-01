@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/quangpham919/Full_Stack_Project.svg?branch=master)](https://travis-ci.com/quangpham919/Full_Stack_Project)
 
-### GameLobby CRUD Application with JWT Authentication
+## GameLobby CRUD Application with JWT Authentication
+#### Angular, Express, Node.JS, Mongo DB
 Student ID | Member  | Repo Link 
 --- | --- | ---
 101136246 | Quang Pham | [Link to GitHub](https://github.com/quangpham919)
