@@ -18,6 +18,8 @@
 - cd front-end-project
 - heroku local web
 
+### Contributors
+
 Student ID | Member  | Repo Link 
 --- | --- | ---
 101136246 | Quang Pham | [Link to GitHub](https://github.com/quangpham919)
